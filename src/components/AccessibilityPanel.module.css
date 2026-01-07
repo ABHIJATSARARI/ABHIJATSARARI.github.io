@@ -1,0 +1,203 @@
+.trigger {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(5, 5, 8, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.trigger:hover {
+    color: var(--holo-cyan);
+    border-color: var(--holo-cyan);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+}
+
+.panel {
+    position: fixed;
+    bottom: 6rem;
+    left: 2rem;
+    width: 280px;
+    background: rgba(5, 5, 8, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.panel.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.header h3 {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+}
+
+.close:hover {
+    color: var(--text-primary);
+}
+
+.options {
+    padding: 0.5rem;
+}
+
+.option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.option:hover {
+    background: var(--glass-bg-hover);
+}
+
+.optionInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.optionIcon {
+    font-size: 1.2rem;
+}
+
+.optionLabel {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+}
+
+.optionDesc {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.toggle {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle.active {
+    background: rgba(0, 245, 255, 0.2);
+    border-color: var(--holo-cyan);
+}
+
+.toggleKnob {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    background: var(--text-muted);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.toggle.active .toggleKnob {
+    left: calc(100% - 20px);
+    background: var(--holo-cyan);
+    box-shadow: 0 0 10px var(--holo-cyan);
+}
+
+.shortcuts {
+    padding: 1rem;
+    border-top: 1px solid var(--glass-border);
+}
+
+.shortcuts h4 {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+}
+
+.shortcut {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.shortcut kbd {
+    padding: 0.2rem 0.4rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-primary);
+}
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+}
+
+@media (max-width: 768px) {
+    .trigger {
+        bottom: 1rem;
+        left: 1rem;
+        width: 40px;
+        height: 40px;
+    }
+
+    .panel {
+        bottom: 4.5rem;
+        left: 1rem;
+        width: calc(100vw - 2rem);
+        max-width: 300px;
+    }
+}

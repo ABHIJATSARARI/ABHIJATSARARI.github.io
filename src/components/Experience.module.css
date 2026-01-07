@@ -1,0 +1,537 @@
+/* ============================================
+   EXPERIENCE - TIME PORTAL JOURNEY
+   ============================================ */
+
+.section {
+    position: relative;
+    min-height: 100vh;
+    padding: var(--space-4xl) var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.header h2 {
+    margin-bottom: var(--space-md);
+}
+
+.header p {
+    color: var(--text-secondary);
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 2rem;
+    animation: fadeInUp 0.6s ease-out 0.1s backwards;
+}
+
+.timelineLine {
+    position: absolute;
+    top: 25px;
+    left: 2rem;
+    right: 2rem;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+}
+
+.timelineProgress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: var(--progress);
+    background: linear-gradient(90deg, var(--holo-cyan), var(--holo-purple));
+    border-radius: var(--radius-full);
+    transition: width 0.5s ease;
+}
+
+.timelineNode {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.nodeOuter {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 2px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.timelineNode:hover .nodeOuter {
+    border-color: var(--holo-cyan);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+}
+
+.timelineNode.active .nodeOuter {
+    border-color: var(--holo-cyan);
+    background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(168, 85, 247, 0.1));
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.4);
+}
+
+.timelineNode.passed .nodeOuter {
+    border-color: var(--holo-purple);
+    background: rgba(168, 85, 247, 0.1);
+}
+
+.nodeInner {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nodeIcon {
+    font-size: 1.2rem;
+}
+
+.nodeLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.nodeYear {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--holo-cyan);
+}
+
+.nodeCompany {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.timelineNode:hover .nodeCompany,
+.timelineNode.active .nodeCompany {
+    color: var(--text-primary);
+}
+
+.nodePulse {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    border: 1px solid var(--holo-cyan);
+    border-radius: 50%;
+    animation: nodePulse 2s ease-out infinite;
+}
+
+@keyframes nodePulse {
+    0% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateX(-50%) scale(1.8);
+        opacity: 0;
+    }
+}
+
+/* Details panel */
+.details {
+    position: relative;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.03) 0%,
+            rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    min-height: 400px;
+    overflow: hidden;
+    animation: fadeInUp 0.6s ease-out 0.2s backwards;
+    transition: all 0.3s ease;
+}
+
+.details.transitioning {
+    opacity: 0.5;
+    transform: scale(0.98);
+}
+
+/* Portal frame */
+.portalFrame {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.portalCorner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 2px solid transparent;
+}
+
+.portalCorner:nth-child(1) {
+    top: 0;
+    left: 0;
+    border-top-color: var(--holo-cyan);
+    border-left-color: var(--holo-cyan);
+}
+
+.portalCorner:nth-child(2) {
+    top: 0;
+    right: 0;
+    border-top-color: var(--holo-purple);
+    border-right-color: var(--holo-purple);
+}
+
+.portalCorner:nth-child(3) {
+    bottom: 0;
+    left: 0;
+    border-bottom-color: var(--holo-purple);
+    border-left-color: var(--holo-purple);
+}
+
+.portalCorner:nth-child(4) {
+    bottom: 0;
+    right: 0;
+    border-bottom-color: var(--holo-cyan);
+    border-right-color: var(--holo-cyan);
+}
+
+.detailsContent {
+    position: relative;
+    z-index: 1;
+}
+
+.detailsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.companyBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-full);
+}
+
+.companyIcon {
+    font-size: 1.2rem;
+}
+
+.companyBadge span:last-child {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.period {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--holo-cyan);
+    padding: 0.4rem 0.8rem;
+    background: rgba(0, 245, 255, 0.1);
+    border-radius: var(--radius-sm);
+}
+
+.role {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.location {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.description {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+/* Projects */
+.projects {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.project {
+    padding: 1rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+}
+
+.project:hover {
+    border-color: rgba(0, 245, 255, 0.3);
+}
+
+.projectHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.projectIcon {
+    color: var(--holo-cyan);
+}
+
+.projectName {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.highlights li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.highlightDot {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    margin-top: 0.5rem;
+    background: var(--holo-cyan);
+    border-radius: 50%;
+}
+
+/* Warp effect */
+.warpLines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.details.transitioning .warpLines {
+    opacity: 1;
+}
+
+.warpLine {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 200%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--holo-cyan), transparent);
+    transform: translateX(-50%) translateY(-50%);
+    animation: warpLine 0.3s ease-out;
+    animation-delay: var(--delay);
+}
+
+.warpLine:nth-child(odd) {
+    background: linear-gradient(90deg, transparent, var(--holo-purple), transparent);
+}
+
+@keyframes warpLine {
+    from {
+        transform: translateX(-50%) translateY(-50%) scaleX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-50%) translateY(-50%) scaleX(1);
+        opacity: 0;
+    }
+}
+
+/* Navigation */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeInUp 0.6s ease-out 0.3s backwards;
+}
+
+.navBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-full);
+    color: var(--text-secondary);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.navBtn:hover:not(:disabled) {
+    border-color: var(--holo-cyan);
+    color: var(--text-primary);
+    transform: translateX(4px);
+}
+
+.navBtn:first-child:hover:not(:disabled) {
+    transform: translateX(-4px);
+}
+
+.navBtn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.navIndicator {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section {
+        padding: var(--space-2xl) var(--space-md);
+    }
+
+    .timeline {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 0;
+    }
+
+    .timelineLine {
+        display: none;
+    }
+
+    .timelineNode {
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+
+    .nodeOuter {
+        width: 40px;
+        height: 40px;
+    }
+
+    .nodeInner {
+        width: 28px;
+        height: 28px;
+    }
+
+    .nodeLabel {
+        align-items: flex-start;
+    }
+
+    .details {
+        padding: 1.5rem;
+        min-height: auto;
+    }
+
+    .detailsHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .role {
+        font-size: 1.4rem;
+    }
+
+    .navBtn span {
+        display: none;
+    }
+}
+
+/* Technologies */
+.technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.techTag {
+    padding: 0.35rem 0.75rem;
+    background: rgba(0, 245, 255, 0.1);
+    border: 1px solid rgba(0, 245, 255, 0.2);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--holo-cyan);
+    transition: all 0.2s ease;
+}
+
+.techTag:hover {
+    background: rgba(0, 245, 255, 0.2);
+    border-color: var(--holo-cyan);
+}

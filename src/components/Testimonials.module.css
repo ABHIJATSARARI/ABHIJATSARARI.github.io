@@ -1,0 +1,165 @@
+.section {
+    padding: var(--space-4xl) var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.header h2 {
+    margin-bottom: var(--space-md);
+}
+
+.header p {
+    color: var(--text-secondary);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: var(--space-2xl);
+}
+
+.card {
+    position: relative;
+    padding: 2rem;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.03) 0%,
+            rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    animation: cardFadeIn 0.5s ease-out backwards;
+    animation-delay: var(--delay);
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    border-color: rgba(0, 245, 255, 0.3);
+    transform: translateY(-4px);
+}
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.quoteMark {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-family: serif;
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--holo-cyan);
+    opacity: 0.2;
+}
+
+.quote {
+    position: relative;
+    z-index: 1;
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.avatar {
+    font-size: 2rem;
+}
+
+.name {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.role {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.glow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to top,
+            rgba(0, 245, 255, 0.05) 0%,
+            transparent 100%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .glow {
+    opacity: 1;
+}
+
+.note {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    animation: fadeInUp 0.6s ease-out 0.3s backwards;
+}
+
+.note a {
+    color: var(--holo-cyan);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.note a:hover {
+    color: var(--holo-purple);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: var(--space-2xl) var(--space-md);
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+}

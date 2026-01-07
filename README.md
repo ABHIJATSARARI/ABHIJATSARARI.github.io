@@ -1,36 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Abhijat Sarari - Futuristic Portfolio
 
-## Getting Started
+A next-generation portfolio website built with Next.js, featuring an immersive sci-fi design with holographic effects, neural network visualizations, and cutting-edge animations.
 
-First, run the development server:
+![Portfolio Preview](./public/og-image.png)
+
+## ✨ Features
+
+- **🧠 Neural Network Skills Visualization** - Interactive SVG network with tech icons and bezier curves
+- **🌀 Holographic UI Effects** - Glassmorphism, animated gradients, and glow effects
+- **⚡ Dynamic Data** - Auto-syncing from GitHub, Credly, and Medium
+- **🎨 Multiple Themes** - Cyberpunk, Aurora, Neon, and Minimal color schemes
+- **♿ Accessibility** - Reduce motion, high contrast mode, keyboard navigation
+- **🔮 Easter Eggs** - Konami code reveals Matrix rain effect
+- **📱 Fully Responsive** - Mobile-first design that works on all devices
+
+## 🚀 Live Demo
+
+[View Portfolio](https://abhijatsarari.github.io/vdcv/)
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 16 with App Router
+- **Language:** TypeScript
+- **Styling:** CSS Modules with custom design system
+- **Animations:** CSS animations + Canvas API
+- **Deployment:** GitHub Pages (Static Export)
+
+## 📦 Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/ABHIJATSARARI/vdcv.git
+
+# Navigate to directory
+cd vdcv
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Build static export
+npm run build
 
-## Learn More
+# The static files are in the 'out' directory
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🔧 Configuration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Environment Variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Create a `.env.local` file:
 
-## Deploy on Vercel
+```env
+NEXT_PUBLIC_ADMIN_USER=your_username
+NEXT_PUBLIC_ADMIN_PASS=your_password
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Customization
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Edit `src/data/profile.ts` to update:
+- Personal information
+- Experience & projects
+- Skills & certifications
+- Social links
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                # Next.js App Router pages
+├── components/         # React components
+│   ├── Hero.tsx        # Landing section
+│   ├── Skills.tsx      # Neural network visualization
+│   ├── Projects.tsx    # Holographic project cards
+│   └── ...
+├── data/              # Static data files
+│   └── profile.ts      # Portfolio content
+├── contexts/          # React contexts
+├── lib/               # Utility functions
+└── hooks/             # Custom React hooks
+```
+
+## 🎨 Themes
+
+Switch themes using the palette icon:
+
+| Theme | Description |
+|-------|-------------|
+| 🌃 Cyberpunk | Deep purples with cyan accents |
+| 🌌 Aurora | Northern lights inspired |
+| 💜 Neon | Vibrant pink and purple |
+| ⬜ Minimal | Clean, subtle design |
+
+## 🔐 Admin Dashboard
+
+Access the secret admin panel at `/observatory-9x7k2m` to view and export your portfolio data.
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🤝 Contact
+
+**Abhijat Sarari**
+- Email: abhijatsarari@gmail.com
+- LinkedIn: [abhijatsarari](https://linkedin.com/in/abhijatsarari)
+- GitHub: [ABHIJATSARARI](https://github.com/ABHIJATSARARI)
+
+---
+
+Built with ❤️ and lots of ☕

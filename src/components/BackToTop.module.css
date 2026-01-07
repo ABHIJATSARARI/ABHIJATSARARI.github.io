@@ -1,0 +1,77 @@
+.button {
+    position: fixed;
+    bottom: 6rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(5, 5, 8, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.button.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.button:hover {
+    border-color: var(--holo-cyan);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+}
+
+.button:hover .arrow {
+    transform: translateY(-2px);
+}
+
+.progressRing {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.ringBg {
+    fill: none;
+    stroke: var(--glass-border);
+    stroke-width: 2;
+}
+
+.ringProgress {
+    fill: none;
+    stroke: var(--holo-cyan);
+    stroke-width: 2;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.1s ease;
+}
+
+.arrow {
+    color: var(--text-primary);
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .button {
+        bottom: 5rem;
+        right: 1rem;
+        width: 44px;
+        height: 44px;
+    }
+
+    .arrow {
+        width: 16px;
+        height: 16px;
+    }
+}

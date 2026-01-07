@@ -1,0 +1,44 @@
+.container {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.emoji {
+    font-size: 1rem;
+}
+
+.greeting {
+    color: var(--text-secondary);
+}
+
+.separator {
+    color: var(--text-muted);
+}
+
+.time {
+    color: var(--holo-cyan);
+    font-weight: 500;
+}
+
+.location {
+    color: var(--text-muted);
+    font-size: 0.65rem;
+}

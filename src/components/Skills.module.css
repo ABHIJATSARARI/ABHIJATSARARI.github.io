@@ -1,0 +1,561 @@
+/* ============================================
+   SKILLS - ENHANCED NEURAL NETWORK VISUALIZATION
+   ============================================ */
+
+.section {
+    position: relative;
+    min-height: 100vh;
+    padding: var(--space-4xl) var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Ambient background */
+.section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%,
+            rgba(0, 245, 255, 0.03) 0%,
+            transparent 50%);
+    pointer-events: none;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.header h2 {
+    margin-bottom: var(--space-md);
+}
+
+.header p {
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin-bottom: var(--space-lg);
+}
+
+/* Skill count badge */
+.skillBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-full);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.skillCount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--holo-cyan), var(--holo-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Category filter */
+.categoryFilter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: var(--space-xl);
+    animation: fadeInUp 0.6s ease-out 0.1s backwards;
+}
+
+.filterBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-full);
+    color: var(--text-secondary);
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filterBtn:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--category-color, var(--holo-cyan));
+    color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.filterBtn.active {
+    background: rgba(0, 245, 255, 0.1);
+    border-color: var(--category-color, var(--holo-cyan));
+    color: var(--text-primary);
+    box-shadow: 0 0 25px rgba(0, 245, 255, 0.3);
+}
+
+.filterIcon {
+    font-size: 1rem;
+}
+
+/* Network container */
+.networkContainer {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    min-height: 550px;
+    height: 60vh;
+    margin-bottom: var(--space-xl);
+    animation: fadeInUp 0.6s ease-out 0.2s backwards;
+}
+
+.networkSvg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Connections */
+.connection {
+    transition: all 0.4s ease;
+}
+
+.connectionActive {
+    animation: pulseConnection 3s ease-in-out infinite;
+}
+
+@keyframes pulseConnection {
+
+    0%,
+    100% {
+        stroke-opacity: 0.2;
+    }
+
+    50% {
+        stroke-opacity: 0.5;
+    }
+}
+
+/* Animated pulse line */
+.pulseLine {
+    animation: dataFlow 2s linear infinite;
+}
+
+@keyframes dataFlow {
+    from {
+        stroke-dashoffset: 40;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Nodes */
+.node {
+    transition: all 0.3s ease;
+}
+
+.nodeGlow {
+    transition: all 0.4s ease;
+}
+
+/* Core node */
+.coreNode {
+    animation: corePulse 3s ease-in-out infinite;
+}
+
+@keyframes corePulse {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 15px rgba(0, 245, 255, 0.5));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 30px rgba(0, 245, 255, 0.8));
+    }
+}
+
+/* Orbital rings */
+.orbitRing {
+    animation: orbitSpin 20s linear infinite;
+    transform-origin: center;
+}
+
+.orbitRingOuter {
+    animation: orbitSpinReverse 30s linear infinite;
+    transform-origin: center;
+}
+
+@keyframes orbitSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes orbitSpinReverse {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+/* Pulse ring on hover */
+.pulseRing {
+    animation: ringExpand 1s ease-out infinite;
+    transform-origin: center;
+}
+
+@keyframes ringExpand {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.coreIcon {
+    fill: var(--bg-void);
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+.skillIcon {
+    fill: var(--text-primary);
+    pointer-events: none;
+}
+
+.categoryLabel {
+    font-family: var(--font-body);
+    fill: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+/* Tooltip */
+.tooltip {
+    position: absolute;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    background: rgba(5, 5, 8, 0.95);
+    border: 1px solid var(--holo-cyan);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 100;
+    animation: tooltipFadeIn 0.2s ease-out;
+    box-shadow:
+        0 0 20px rgba(0, 245, 255, 0.4),
+        inset 0 0 20px rgba(0, 245, 255, 0.05);
+}
+
+.tooltipIcon {
+    font-size: 1.1rem;
+}
+
+.tooltipProficiency {
+    margin-left: 0.5rem;
+    padding: 0.15rem 0.5rem;
+    background: rgba(0, 245, 255, 0.2);
+    border-radius: var(--radius-sm);
+    font-size: 0.65rem;
+    text-transform: capitalize;
+    color: var(--holo-cyan);
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
+    border-top-color: var(--holo-cyan);
+}
+
+@keyframes tooltipFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+/* Legend */
+.legend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-xl);
+    animation: fadeInUp 0.6s ease-out 0.3s backwards;
+}
+
+.legend h4 {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.legendItems {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.legendItem:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+.legendDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor;
+}
+
+.legendCount {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.proficiencyLegend {
+    display: flex;
+    gap: 1.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--glass-border);
+}
+
+.proficiencyItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.profDot {
+    display: inline-block;
+    background: var(--holo-cyan);
+    border-radius: 50%;
+    opacity: 0.7;
+}
+
+/* Skills list */
+.skillsList {
+    text-align: center;
+    max-width: 900px;
+    animation: skillsListAppear 0.5s ease-out;
+}
+
+@keyframes skillsListAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.skillsList h3 {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: var(--space-lg);
+    font-size: 1.3rem;
+    text-shadow: 0 0 20px currentColor;
+}
+
+.skillTags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.skillTag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: var(--glass-bg);
+    border: 1px solid;
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    animation: skillTagFadeIn 0.4s ease-out backwards;
+    transition: all 0.3s ease;
+}
+
+.tagIcon {
+    font-size: 1rem;
+}
+
+.expertBadge {
+    color: #ffd700;
+    margin-left: 0.25rem;
+    animation: starPulse 2s ease-in-out infinite;
+}
+
+@keyframes starPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.skillTag:hover {
+    background: var(--glass-bg-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px var(--glow-color, rgba(0, 245, 255, 0.3));
+}
+
+@keyframes skillTagFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section {
+        padding: var(--space-2xl) var(--space-md);
+    }
+
+    .networkContainer {
+        height: 50vh;
+        min-height: 400px;
+    }
+
+    .categoryFilter {
+        gap: 0.5rem;
+    }
+
+    .filterBtn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.7rem;
+    }
+
+    .filterBtn span:last-child {
+        display: none;
+    }
+
+    .legend {
+        padding: 1rem;
+    }
+
+    .legendItems {
+        gap: 0.5rem;
+    }
+
+    .legendItem {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+    }
+
+    .proficiencyLegend {
+        gap: 1rem;
+        font-size: 0.65rem;
+    }
+
+    .skillTags {
+        gap: 0.5rem;
+    }
+
+    .skillTag {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .networkContainer {
+        height: 45vh;
+        min-height: 320px;
+    }
+
+    .skillBadge {
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+    }
+}

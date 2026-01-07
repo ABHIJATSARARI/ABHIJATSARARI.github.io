@@ -1,0 +1,135 @@
+.container {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    z-index: 1000;
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(5, 5, 8, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-full);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle:hover {
+    border-color: var(--holo-cyan);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+}
+
+.icon {
+    font-size: 1.2rem;
+}
+
+.arrow {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    transition: transform 0.3s ease;
+}
+
+.menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    min-width: 200px;
+    background: rgba(5, 5, 8, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.menuHeader {
+    padding: 0.75rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.option:hover {
+    background: var(--glass-bg-hover);
+    color: var(--text-primary);
+}
+
+.option.active {
+    color: var(--holo-cyan);
+    background: rgba(0, 245, 255, 0.05);
+}
+
+.optionIcon {
+    font-size: 1rem;
+}
+
+.optionLabel {
+    flex: 1;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+}
+
+.colorPreview {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid var(--glass-border);
+}
+
+.check {
+    color: var(--holo-cyan);
+    font-size: 0.85rem;
+}
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .container {
+        top: 1rem;
+        left: 1rem;
+    }
+
+    .toggle {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .icon {
+        font-size: 1rem;
+    }
+}

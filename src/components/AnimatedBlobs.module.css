@@ -1,0 +1,85 @@
+.container {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: blobFloat 20s ease-in-out infinite;
+}
+
+.blob1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--holo-cyan) 0%, transparent 70%);
+    top: -200px;
+    left: -200px;
+    animation-delay: 0s;
+}
+
+.blob2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--holo-purple) 0%, transparent 70%);
+    top: 50%;
+    right: -150px;
+    animation-delay: -5s;
+    animation-duration: 25s;
+}
+
+.blob3 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--holo-pink) 0%, transparent 70%);
+    bottom: -100px;
+    left: 30%;
+    animation-delay: -10s;
+    animation-duration: 22s;
+}
+
+.blob4 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, var(--holo-green) 0%, transparent 70%);
+    top: 40%;
+    left: 10%;
+    animation-delay: -15s;
+    animation-duration: 28s;
+}
+
+@keyframes blobFloat {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(50px, -30px) scale(1.1);
+    }
+
+    50% {
+        transform: translate(-30px, 50px) scale(0.95);
+    }
+
+    75% {
+        transform: translate(30px, 30px) scale(1.05);
+    }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    .blob {
+        animation: none;
+    }
+}
+
+.reduce-motion .blob {
+    animation: none;
+}

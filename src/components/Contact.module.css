@@ -1,0 +1,641 @@
+/* ============================================
+   CONTACT - FUTURISTIC AI INTERFACE
+   ============================================ */
+
+.section {
+    position: relative;
+    min-height: 100vh;
+    padding: var(--space-4xl) var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Info section */
+.info {
+    display: flex;
+    flex-direction: column;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.info h2 {
+    margin-bottom: var(--space-lg);
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2xl);
+    line-height: 1.8;
+}
+
+/* Terminal */
+.terminal {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: var(--space-2xl);
+}
+
+.terminalHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.terminalDots {
+    display: flex;
+    gap: 6px;
+}
+
+.terminalDots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ff5f56;
+}
+
+.terminalDots span:nth-child(2) {
+    background: #ffbd2e;
+}
+
+.terminalDots span:nth-child(3) {
+    background: #27ca40;
+}
+
+.terminalTitle {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.terminalBody {
+    padding: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--holo-cyan);
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.terminalLine {
+    margin-bottom: 0.25rem;
+    animation: typeIn 0.3s ease-out backwards;
+}
+
+@keyframes typeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.terminalCursor {
+    animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Quick contact */
+.quickContact {
+    margin-bottom: var(--space-xl);
+}
+
+.contactCard {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contactCard:hover {
+    border-color: var(--holo-cyan);
+    transform: translateX(8px);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+}
+
+.contactIcon {
+    font-size: 1.5rem;
+}
+
+.contactLabel {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+}
+
+.contactValue {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+/* Social grid */
+.socialGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.socialLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+}
+
+.socialLink:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--holo-cyan);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+/* Form */
+.form {
+    position: relative;
+    padding: 2rem;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.03) 0%,
+            rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-xl);
+    animation: fadeInUp 0.6s ease-out 0.2s backwards;
+}
+
+.formBorder {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg,
+            rgba(0, 245, 255, 0.4) 0%,
+            rgba(168, 85, 247, 0.2) 50%,
+            rgba(0, 245, 255, 0.4) 100%);
+    background-size: 200% 200%;
+    animation: borderShift 4s linear infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+@keyframes borderShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+.formHeader {
+    margin-bottom: 1.5rem;
+}
+
+.formStatus {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #10b981;
+    letter-spacing: 0.05em;
+}
+
+.statusDot {
+    width: 6px;
+    height: 6px;
+    background: #10b981;
+    border-radius: 50%;
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.inputGroup {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.inputGroup label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.labelIcon {
+    color: var(--holo-cyan);
+    font-size: 0.7rem;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    resize: none;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.input:focus,
+.textarea:focus {
+    outline: none;
+    border-color: var(--holo-cyan);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.1);
+}
+
+.inputGlow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--holo-cyan), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.input:focus+.inputGlow,
+.textarea:focus+.inputGlow {
+    opacity: 1;
+}
+
+.submitBtn {
+    position: relative;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--holo-cyan), var(--holo-blue));
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--bg-void);
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.submitBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow:
+        0 0 30px rgba(0, 245, 255, 0.4),
+        0 0 60px rgba(0, 245, 255, 0.2);
+}
+
+.submitBtn:disabled {
+    cursor: not-allowed;
+}
+
+.submitBtn.submitting {
+    background: linear-gradient(135deg, var(--holo-purple), var(--holo-pink));
+}
+
+.submitBtn.success {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.btnContent {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.btnGlow {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.submitBtn:hover .btnGlow {
+    transform: translateX(100%);
+}
+
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.matrixOverlay {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg,
+            transparent 0px,
+            rgba(0, 245, 255, 0.03) 2px,
+            transparent 4px);
+    animation: matrixScroll 0.1s linear infinite;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+@keyframes matrixScroll {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 0 4px;
+    }
+}
+
+/* Email CTA Section */
+.emailCta {
+    position: relative;
+    padding: 2.5rem;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.03) 0%,
+            rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-xl);
+    animation: fadeInUp 0.6s ease-out 0.2s backwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.ctaContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.ctaIcon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.ctaContent h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.ctaContent p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    max-width: 280px;
+}
+
+.emailBtn {
+    position: relative;
+    display: inline-flex;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, var(--holo-cyan), var(--holo-blue));
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--bg-void);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    margin-top: 0.5rem;
+}
+
+.emailBtn:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 0 30px rgba(0, 245, 255, 0.4),
+        0 0 60px rgba(0, 245, 255, 0.2);
+}
+
+.emailDisplay {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.emailLabel {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.25rem;
+}
+
+.emailValue {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--holo-cyan);
+}
+
+/* Availability */
+.availability {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--glass-border);
+    width: 100%;
+}
+
+.availItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.availIcon {
+    font-size: 1rem;
+}
+
+.statusDot.online {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #10b981;
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+/* Footer */
+.footer {
+    margin-top: var(--space-4xl);
+    padding-top: var(--space-2xl);
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+}
+
+.footerContent {
+    margin-bottom: 1rem;
+}
+
+.footerMain {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.footerMain span {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.footerSub {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.footerDecor {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.footerDecor span {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--holo-cyan), transparent);
+}
+
+.footerDecor span:nth-child(2) {
+    width: 60px;
+    background: linear-gradient(90deg, transparent, var(--holo-purple), transparent);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .socialGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: var(--space-2xl) var(--space-md);
+    }
+
+    .emailCta {
+        padding: 1.5rem;
+    }
+
+    .socialGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .availability {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}

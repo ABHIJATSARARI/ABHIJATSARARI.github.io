@@ -1,0 +1,25 @@
+.container {
+    display: inline-block;
+}
+
+.char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px) rotateX(-90deg);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform-origin: center bottom;
+}
+
+.char.visible {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    .char {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
