@@ -306,9 +306,9 @@ export default function RootLayout({
           as="style"
         />
 
-        {/* Favicon variations */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        {/* Favicon */}
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/icon.svg" />
 
         {/* PWA Manifest */}
         <link rel="manifest" href="/manifest.json" />
