@@ -27,17 +27,20 @@ jobs:
           node-version: "20"
           cache: "npm"
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
       - name: Install dependencies
         run: npm ci
 
-      - name: Build with environment variables
+      - name: Build
         env:
           NEXT_PUBLIC_ADMIN_USER: ${{ secrets.ADMIN_USER }}
           NEXT_PUBLIC_ADMIN_PASS: ${{ secrets.ADMIN_PASS }}
         run: npm run build
 
-      - name: Add .nojekyll file
-        run: touch out/.nojekyll
+      - name: Add .nojekyll
+        run: touch ./out/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
